@@ -14,19 +14,19 @@ const twitterClient = new TwitterClient({
 
 // setInterval(tweetScheduler, 100000)
 
-setTimeout( function(){ 
+setInterval( function(){ 
     var hour = new Date().getHours();
     if (hour === 10 || hour === 11 || hour === 3) {
         tweetScheduler
     }
-}, 100000);
+}, 1000000);
 
 function tweetScheduler() {
     axios.get('https://statsapi.web.nhl.com/api/v1/draft/prospects')
         .then(response => {
             const data = response.data.prospects ? response.data : {}
             let tweet
-            let count = 0 
+            // let count = 0 
 
             /* function counter() {
                 return ++count
