@@ -3,7 +3,8 @@ const {
     TwitterClient
 } = require('twitter-api-client')
 const axios = require('axios')
-// const cron = require('node-cron')
+const cron = require('node-cron')
+// import * as cron from 'node-cron'
 
 const twitterClient = new TwitterClient({
     apiKey: process.env.TWITTER_API_KEY,
@@ -12,14 +13,24 @@ const twitterClient = new TwitterClient({
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
+/*  asterisks time divisions; they specify “every minute,” “every hour,” “every day of the month,” “every month,” and “every day of the week,” respectively. */
+
+/* currently runs every day at 5:03 a.m. 
+** every friday at 4 use: 0 16 * * friday
+*/
+const tweet = cron.schedule('3 5 * * *', () => {
+    tweetScheduler
+});
+tweet.start()
+
 // setInterval(tweetScheduler, 100000)
 
-setInterval( function(){ 
+/* setInterval( function(){ 
     var hour = new Date().getHours();
     if (hour === 10 || hour === 11 || hour === 3) {
         tweetScheduler
     }
-}, 1000000);
+}, 1000000); */
 
 function tweetScheduler() {
     axios.get('https://statsapi.web.nhl.com/api/v1/draft/prospects')
