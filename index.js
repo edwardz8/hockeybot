@@ -18,8 +18,8 @@ const twitterClient = new TwitterClient({
 /* currently runs every day at 5:03 a.m. 
 ** every friday at 4 use: 0 16 * * friday
 */
-const tweet = cron.schedule('3 5 * * *', () => {
-    tweetScheduler
+const tweet = cron.schedule('3 2 * * *', () => {
+    tweetScheduler()
 });
 tweet.start()
 
