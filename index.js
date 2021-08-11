@@ -2,6 +2,7 @@ require('dotenv').config()
 const {
     TwitterClient
 } = require('twitter-api-client')
+// const config = require('./config')
 const axios = require('axios')
 const cron = require('node-cron')
 // import * as cron from 'node-cron'
