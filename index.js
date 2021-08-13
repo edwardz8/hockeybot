@@ -16,9 +16,9 @@ const twitterClient = new TwitterClient({
 
 /*  asterisks time divisions; they specify “every minute,” “every hour,” “every day of the month,” “every month,” and “every day of the week,” respectively. */
 
-/* currently runs every day at 5:03 a.m. 
-** every friday at 4 use: 0 16 * * friday
-*/
+/* currently runs every day at 2:03 a.m. 
+ ** every friday at 4 p.m. use: 0 16 * * friday
+ */
 const tweet = cron.schedule('3 2 * * *', () => {
     tweetScheduler()
 });
@@ -49,8 +49,10 @@ function tweetScheduler() {
             // console.log(random);
 
             if (data && data.prospects.length) {
+                for (let i = 0; i < data.prospects.length; i++) {
+                    tweet = '🏒  Hockey Prospect Highlight  🏒  ' + data.prospects[0].fullName + ' - ' + data.prospects[0].birthCountry + ' - ' + data.prospects[0].height + ' - ' + data.prospects[0].weight + ' - ' + data.prospects[0].primaryPosition.name + '  🥅  #nhl #hockey #nhlprospects' + random
+                }
                 // console.log(data, 'data')
-                tweet = '🏒  Hockey Prospect Highlight  🏒  ' + data.prospects[0].fullName + ' - ' + data.prospects[0].birthCountry + ' - ' + data.prospects[0].height + ' - ' + data.prospects[0].weight + ' - ' + data.prospects[0].primaryPosition.name + random +  '  🥅  #nhl #hockey #nhlprospects'
                 //tweet the first event in the array
             } else {
                 tweet = 'No prospect today'
