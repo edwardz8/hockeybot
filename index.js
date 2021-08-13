@@ -38,22 +38,13 @@ function tweetScheduler() {
         .then(response => {
             const data = response.data.prospects ? response.data : {}
             let tweet
-            // let count = 0 
-
-            /* function counter() {
-                return ++count
-            } */
-
             const random = Math.floor(Math.random() * 100);
-
-            // console.log(random);
 
             if (data && data.prospects.length) {
                 for (let i = 0; i < data.prospects.length; i++) {
-                    tweet = '🏒  Hockey Prospect Highlight  🏒  ' + data.prospects[0].fullName + ' - ' + data.prospects[0].birthCountry + ' - ' + data.prospects[0].height + ' - ' + data.prospects[0].weight + ' - ' + data.prospects[0].primaryPosition.name + '  🥅  #nhl #hockey #nhlprospects' + random
+                    tweet = '🏒  Hockey Prospect Highlight  🏒  ' + data.prospects[i].fullName + ' - ' + data.prospects[i].birthCountry + ' - ' + data.prospects[i].height + ' - ' + data.prospects[i].weight + ' - ' + data.prospects[i].primaryPosition.name + '  🥅  #nhl #hockey #nhlprospects' + random
                 }
                 // console.log(data, 'data')
-                //tweet the first event in the array
             } else {
                 tweet = 'No prospect today'
             }
