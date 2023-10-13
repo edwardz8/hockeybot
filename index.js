@@ -16,10 +16,12 @@ const twitterClient = new TwitterClient({
 
 /*  asterisks time divisions; they specify “every minute,” “every hour,” “every day of the month,” “every month,” and “every day of the week,” respectively. */
 
-/* currently runs every day at 2:03 a.m. 
+/* 
+  for testing: thirtieth second of the twentieth minute of each hour
+  currently runs every day at 2:03 a.m. // 3 2 * * * 
  ** every friday at 4 p.m. use: 0 16 * * friday
  */
-const tweet = cron.schedule('3 2 * * *', () => {
+const tweet = cron.schedule('30 20 * * * *', () => {
     tweetScheduler()
 });
 tweet.start()
